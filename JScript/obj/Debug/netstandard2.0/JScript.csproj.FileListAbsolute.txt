@@ -1,4 +1,3 @@
-C:\Users\adzhu\Source\Repos\JScript\JScript\obj\Debug\netstandard2.0\JScript.csprojResolveAssemblyReference.cache
 C:\Users\adzhu\Source\Repos\JScript\JScript\obj\Debug\netstandard2.0\JScript.csproj.CoreCompileInputs.cache
 C:\Users\adzhu\Source\Repos\JScript\JScript\obj\Debug\netstandard2.0\JScript.AssemblyInfoInputs.cache
 C:\Users\adzhu\Source\Repos\JScript\JScript\obj\Debug\netstandard2.0\JScript.AssemblyInfo.cs

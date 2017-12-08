@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\JScript\JScript.csproj">
+    <ProjectReference Include="..\JScript\RapidScriptEngine.csproj">
       <Project>{13674ea3-2747-42bf-8f27-806932a6c2bf}</Project>
-      <Name>JScript</Name>
+      <Name>RapidScriptEngine</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

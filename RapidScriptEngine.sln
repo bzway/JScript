@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JScript", "JScript\JScript.csproj", "{13674EA3-2747-42BF-8F27-806932A6C2BF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidScriptEngine", "JScript\RapidScriptEngine.csproj", "{13674EA3-2747-42BF-8F27-806932A6C2BF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScriptEngineUnitTest", "UnitTest\RapidScriptEngineUnitTest.csproj", "{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

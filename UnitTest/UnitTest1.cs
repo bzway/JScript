@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using JScript;
 using System.Diagnostics;
+using JScript.Lexers;
+using JScript.Parsers;
 
 namespace UnitTest
 {
@@ -18,8 +20,9 @@ namespace UnitTest
 var test='test';
 test +=10.1;
 alert(test);");
-            foreach (var item in source)
+            while (source.MoveNext())
             {
+                var item = source.Current;
                 Console.WriteLine(item);
             }
             Console.WriteLine("------------------");
@@ -30,10 +33,10 @@ alert(test);");
         public void TestMethod2()
         {
             Parser parser = new Parser(@"
-var test='test';
+var test='abc';
 return test;");
 
-            Console.WriteLine(parser.Parse().Value());
+            Console.WriteLine(parser.Parse().Value(new ScriptContext()).Value);
             Console.WriteLine("------------------");
         }
     }

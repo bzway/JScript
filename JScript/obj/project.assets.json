@@ -186,9 +186,9 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\JScript.csproj",
-      "projectName": "JScript",
-      "projectPath": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\JScript.csproj",
+      "projectUniqueName": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\RapidScriptEngine.csproj",
+      "projectName": "RapidScriptEngine",
+      "projectPath": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\RapidScriptEngine.csproj",
       "packagesPath": "C:\\Users\\adzhu\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\obj\\",
       "projectStyle": "PackageReference",
