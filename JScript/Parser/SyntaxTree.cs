@@ -9,12 +9,12 @@ namespace JScript.Parsers
         {
             this.Children = new List<ISyntaxNode>();
         }
-        public override IScriptType Value(ScriptContext context)
+        public override IScriptType Execute(ScriptContext context)
         {
             IScriptType result = new VoidScriptType();
             foreach (var item in this.Children)
             {
-                result = item.Value(context);
+                result = item.Execute(context);
                 if (result is ReturnScriptType)
                 {
                     return result;

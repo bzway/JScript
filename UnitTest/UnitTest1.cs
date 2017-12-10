@@ -36,7 +36,7 @@ alert(test);");
 var test='abc';
 return test;");
 
-            Console.WriteLine(parser.Parse().Value(new ScriptContext()).Value);
+            Console.WriteLine(parser.Parse().Execute(new ScriptContext()).Value);
             Console.WriteLine("------------------");
         }
     }

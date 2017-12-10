@@ -14,7 +14,7 @@ namespace JScript.Parsers
         {
             this.name = name;
         }
-        public override AnyScriptType Value(ScriptContext context)
+        public override AnyScriptType Execute(ScriptContext context)
         {
             var result = new AnyScriptType()
             {
@@ -30,7 +30,7 @@ namespace JScript.Parsers
         {
             this.value = value;
         }
-        public override AnyScriptType Value(ScriptContext context)
+        public override AnyScriptType Execute(ScriptContext context)
         {
             return this.value;
         }
@@ -38,15 +38,89 @@ namespace JScript.Parsers
     public class AssignNode : AbstractSyntaxNode<VoidScriptType>
     {
         private readonly string name;
-        private readonly object value;
-        public AssignNode(string name, object value)
+        private readonly ISyntaxNode value;
+        private readonly OperateType Operate;
+        public AssignNode(string name, OperateType operate, ISyntaxNode value)
         {
             this.name = name;
             this.value = value;
+            this.Operate = operate;
         }
-        public override VoidScriptType Value(ScriptContext context)
+        public override VoidScriptType Execute(ScriptContext context)
         {
-            context[this.name] = this.value;
+            var obj = context[this.name];
+            if (obj == null)
+            {
+                switch (this.Operate)
+                {
+                    case OperateType.Add:
+                        context[this.name] = this.value.Execute(context);
+                        return new VoidScriptType();
+                    case OperateType.Sub:
+                        var value = this.value.Execute(context);
+                        if (value is IntegerScriptType)
+                        {
+                            context[this.name] = -((int)value.Value);
+                        }
+                        else if (value is DoubleScriptType)
+                        {
+                            context[this.name] = -((double)value.Value);
+                        }
+                        else
+                        {
+                            throw new Exception("error");
+                        }
+                        return new VoidScriptType();
+                    case OperateType.Mul:
+                        break;
+                    case OperateType.Div:
+                        break;
+                    case OperateType.Mod:
+                        break;
+                    case OperateType.Not:
+                        break;
+                    case OperateType.And:
+                        break;
+                    case OperateType.Or:
+                        break;
+                    case OperateType.Xor:
+                        break;
+                    case OperateType.None:
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            else
+            {
+                switch (this.Operate)
+                {
+                    case OperateType.Add:
+
+                        break;
+                    case OperateType.Sub:
+                        break;
+                    case OperateType.Mul:
+                        break;
+                    case OperateType.Div:
+                        break;
+                    case OperateType.Mod:
+                        break;
+                    case OperateType.Not:
+                        break;
+                    case OperateType.And:
+                        break;
+                    case OperateType.Or:
+                        break;
+                    case OperateType.Xor:
+                        break;
+                    case OperateType.None:
+                        break;
+                    default:
+                        break;
+                }
+            }            context[this.name] = this.value;
             return new VoidScriptType();
         }
     }
@@ -57,12 +131,12 @@ namespace JScript.Parsers
         {
             this.nodes = nodes;
         }
-        public override IScriptType Value(ScriptContext context)
+        public override IScriptType Execute(ScriptContext context)
         {
             IScriptType result = new VoidScriptType();
             foreach (var item in this.nodes)
             {
-                result = item.Value(context);
+                result = item.Execute(context);
                 if (result is ReturnScriptType)
                 {
                     return result;
@@ -85,11 +159,11 @@ namespace JScript.Parsers
             this.step = step;
         }
 
-        public override IScriptType Value(ScriptContext context)
+        public override IScriptType Execute(ScriptContext context)
         {
-            for (this.assign.Value(context); this.condition.Value(context).Value; this.step.Value(context))
+            for (this.assign.Execute(context); this.condition.Execute(context).Value; this.step.Execute(context))
             {
-                var result = this.sequence.Value(context);
+                var result = this.sequence.Execute(context);
                 if (result is ReturnScriptType)
                 {
                     return result;
@@ -114,7 +188,7 @@ namespace JScript.Parsers
             this.value = value;
 
         }
-        public override BooleanScriptType Value(ScriptContext context)
+        public override BooleanScriptType Execute(ScriptContext context)
         {
             if (this.value == null)
             {
@@ -146,16 +220,16 @@ namespace JScript.Parsers
             this.tureNode = tureNode;
             this.falseNode = falseNode;
         }
-        public override IScriptType Value(ScriptContext context)
+        public override IScriptType Execute(ScriptContext context)
         {
-            var condition = this.contidition.Value(context);
+            var condition = this.contidition.Execute(context);
             if (condition.Value)
             {
-                return this.tureNode.Value(context);
+                return this.tureNode.Execute(context);
             }
             else
             {
-                return this.falseNode.Value(context);
+                return this.falseNode.Execute(context);
             }
         }
     }
@@ -167,14 +241,14 @@ namespace JScript.Parsers
             this.syntaxNode = syntaxNode;
         }
 
-        public override AnyScriptType Value(ScriptContext context)
+        public override AnyScriptType Execute(ScriptContext context)
         {
-            return (AnyScriptType)this.syntaxNode.Value(context);
+            return (AnyScriptType)this.syntaxNode.Execute(context);
         }
     }
     public class BreakNode : AbstractSyntaxNode<VoidScriptType>
     {
-        public override VoidScriptType Value(ScriptContext context)
+        public override VoidScriptType Execute(ScriptContext context)
         {
             return new VoidScriptType();
         }
@@ -188,12 +262,12 @@ namespace JScript.Parsers
             this.condition = condition;
             this.sequence = sequence;
         }
-        public override IScriptType Value(ScriptContext context)
+        public override IScriptType Execute(ScriptContext context)
         {
             IScriptType result = new VoidScriptType();
-            while (this.condition.Value(context).Value)
+            while (this.condition.Execute(context).Value)
             {
-                result = this.sequence.Value(context);
+                result = this.sequence.Execute(context);
                 if (result is ReturnScriptType)
                 {
                     return result;
@@ -213,12 +287,12 @@ namespace JScript.Parsers
             this.right = right;
             this.type = type;
         }
-        public override AnyScriptType Value(ScriptContext context)
+        public override AnyScriptType Execute(ScriptContext context)
         {
             throw new NotImplementedException();
         }
     }
-  
+
     public class FunctionNode : AbstractSyntaxNode<VoidScriptType>
     {
         string name;
@@ -229,7 +303,7 @@ namespace JScript.Parsers
             this.name = name;
             this.right = right;
         }
-        public override VoidScriptType Value(ScriptContext context)
+        public override VoidScriptType Execute(ScriptContext context)
         {
 
             Delegate fun = new Func<string, object>(input =>
@@ -250,13 +324,13 @@ namespace JScript.Parsers
             this.name = name;
             this.parameters = parameters;
         }
-        public override AnyScriptType Value(ScriptContext context)
+        public override AnyScriptType Execute(ScriptContext context)
         {
             Delegate fun = context.functions[this.name];
             List<object> list = new List<object>();
             foreach (var item in this.parameters)
             {
-                list.Add(item.Value(context).Value);
+                list.Add(item.Execute(context).Value);
             }
             var result = fun.DynamicInvoke(list);
             return new AnyScriptType() { Value = result };

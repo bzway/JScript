@@ -30,15 +30,15 @@
   },
   "libraries": {
     "Microsoft.NETCore.Platforms/1.1.0": {
-      "sha512": "RTmkgwugaI7tV0PjAwBX4ZKHbv/lMuIKUBeyIB0aosbGALFKIxiGvseJDF5ui5RBGbEJ5AvxZsGI0Rr6ZEfwaw==",
+      "sha512": "kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
       "type": "package",
       "path": "microsoft.netcore.platforms/1.1.0",
       "files": [
-        "Microsoft.NETCore.Platforms.1.1.0.nupkg.sha512",
-        "Microsoft.NETCore.Platforms.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/_._",
+        "microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+        "microsoft.netcore.platforms.nuspec",
         "runtime.json"
       ]
     },
@@ -177,7 +177,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\adzhu\\.nuget\\packages\\": {},
+    "C:\\Users\\AdmZhu\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -186,17 +186,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\RapidScriptEngine.csproj",
+      "projectUniqueName": "D:\\Work\\JScript\\JScript\\RapidScriptEngine.csproj",
       "projectName": "RapidScriptEngine",
-      "projectPath": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\RapidScriptEngine.csproj",
-      "packagesPath": "C:\\Users\\adzhu\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\adzhu\\Source\\Repos\\JScript\\JScript\\obj\\",
+      "projectPath": "D:\\Work\\JScript\\JScript\\RapidScriptEngine.csproj",
+      "packagesPath": "C:\\Users\\AdmZhu\\.nuget\\packages\\",
+      "outputPath": "D:\\Work\\JScript\\JScript\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\adzhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\AdmZhu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -204,10 +204,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "T:\\public\\Packages\\Master": {},
-        "T:\\public\\Packages\\V3": {},
-        "T:\\public\\Packages\\V4": {},
-        "https://www.nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {

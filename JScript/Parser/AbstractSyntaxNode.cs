@@ -2,16 +2,16 @@
 {
     public interface ISyntaxNode
     {
-        IScriptType Value(ScriptContext context);
+        IScriptType Execute(ScriptContext context);
     }
 
     public abstract class AbstractSyntaxNode<T> : ISyntaxNode where T : IScriptType
     {
-        public abstract T Value(ScriptContext context);
+        public abstract T Execute(ScriptContext context);
 
-        IScriptType ISyntaxNode.Value(ScriptContext context)
+        IScriptType ISyntaxNode.Execute(ScriptContext context)
         {
-            return this.Value(context);
+            return this.Execute(context);
         }
     }
     public enum NodeType

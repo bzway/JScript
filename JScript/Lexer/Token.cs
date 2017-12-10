@@ -104,16 +104,23 @@ namespace JScript.Lexers
                             this.Type = TokenType.OpreationMod;
                             break;
                         case '(':
-                            this.Type = TokenType.Left;
+                            this.Type = TokenType.OpenParen;
                             break;
                         case ')':
-                            this.Type = TokenType.Right;
+                            this.Type = TokenType.CloseParen;
                             break;
+                        case '[':
+                            this.Type = TokenType.OpenSquare;
+                            break;
+                        case ']':
+                            this.Type = TokenType.CloseSquare;
+                            break;
+                        case ',':  this.Type = TokenType.Comma ;break;
                         case '{':
-                            this.Type = TokenType.BlockStart;
+                            this.Type = TokenType.OpenCurly;
                             break;
                         case '}':
-                            this.Type = TokenType.BlockEnd;
+                            this.Type = TokenType.CloseCurly;
                             break;
                         case '!':
                             this.Type = TokenType.Not;
@@ -147,7 +154,7 @@ namespace JScript.Lexers
 
     public enum TokenType
     {
-        BlockEnd,
+        CloseCurly,
         Comment,
         Integer,
         String,
@@ -170,9 +177,18 @@ namespace JScript.Lexers
         ElseIf,
         Else,
         If,
-        Left,
-        Right,
-        BlockStart,
+        /// <summary>
+        /// (
+        /// </summary>
+        OpenParen,
+        /// <summary>
+        /// )
+        /// </summary>
+        CloseParen ,
+        /// <summary>
+        /// {
+        /// </summary>
+        OpenCurly,
         End,
         Not,
         And,
@@ -182,5 +198,13 @@ namespace JScript.Lexers
         Eq,
         Return,
         Assign,
+        /// <summary>
+        /// [
+        /// </summary>
+        OpenSquare,
+        /// <summary>
+        /// ]
+        /// </summary>
+        CloseSquare,
     }
 }
