@@ -13,6 +13,7 @@ namespace JScript.Parsers
         And,
         Or,
         Xor,
-        None
+        None,
+        Assign
     }
 }

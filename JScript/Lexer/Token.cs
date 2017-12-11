@@ -103,6 +103,9 @@ namespace JScript.Lexers
                         case '%':
                             this.Type = TokenType.OpreationMod;
                             break;
+                        case '.':
+                            this.Type = TokenType.Dot;
+                            break;
                         case '(':
                             this.Type = TokenType.OpenParen;
                             break;
@@ -115,7 +118,9 @@ namespace JScript.Lexers
                         case ']':
                             this.Type = TokenType.CloseSquare;
                             break;
-                        case ',':  this.Type = TokenType.Comma ;break;
+                        case ',':
+                            this.Type = TokenType.Comma;
+                            break;
                         case '{':
                             this.Type = TokenType.OpenCurly;
                             break;
@@ -138,7 +143,7 @@ namespace JScript.Lexers
                             this.Type = TokenType.End;
                             break;
                         case '=':
-                            this.Type = TokenType.Eq;
+                            this.Type = TokenType.Equal;
                             break;
                         default:
                             this.Type = TokenType.None;
@@ -184,7 +189,7 @@ namespace JScript.Lexers
         /// <summary>
         /// )
         /// </summary>
-        CloseParen ,
+        CloseParen,
         /// <summary>
         /// {
         /// </summary>
@@ -195,7 +200,7 @@ namespace JScript.Lexers
         Or,
         Xor,
         Word,
-        Eq,
+        Equal,
         Return,
         Assign,
         /// <summary>
@@ -206,5 +211,7 @@ namespace JScript.Lexers
         /// ]
         /// </summary>
         CloseSquare,
+        Dot,
+        Comma,
     }
 }

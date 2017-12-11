@@ -35,54 +35,38 @@ namespace JScript.Parsers
                         {
                             throw new ScriptException("", token);
                         }
+
                         switch (this.lexer.Current.Type)
                         {
-                            case TokenType.OpenParen:
+                            case TokenType.Dot://对象引用
                                 break;
-                            case TokenType.CloseParen:
+                            case TokenType.OpenParen://函数引用
+                                ISyntaxNode[] parameters = this.StepParameter();
+                                ISyntaxNode right = new InvokeNode(token.Fragment.Text, parameters);
+                                tree.Children.Add(right);
                                 break;
-                            case TokenType.OpenCurly:
+                            case TokenType.OpenSquare://数组引用
                                 break;
-                            case TokenType.End:
-                                break;
-                            case TokenType.Not:
-                                break;
-                            case TokenType.And:
-                                break;
-                            case TokenType.Or:
-                                break;
-                            case TokenType.Xor:
-                                break;
-                            case TokenType.Word:
-                                break;
-                            case TokenType.Eq:
-                                break;
-                            case TokenType.Return:
-                                break;
-                            case TokenType.Assign:
-                                break;
-                            case TokenType.OpenSquare:
-                                break;
-                            case TokenType.CloseSquare:
+                            case TokenType.Equal://赋值
+                                var node = new AssignNode(token.Fragment.Text, OperateType.Assign, this.StepExpression());
                                 break;
                             default:
                                 break;
                         }
-                        if (this.lexer.Current.Type== TokenType.OpenParen)
+                        if (this.lexer.Current.Type == TokenType.OpenParen)
                         {
 
                         }
-
-                    case TokenType.Assign:
-                        var assignNode = this.StepAssgin();
-                        tree.Children.Add(assignNode);
                         break;
+
                     #endregion
 
+                    #region Return
                     case TokenType.Return:
                         var returnNode = this.StepReturn();
                         tree.Children.Add(returnNode);
                         break;
+                    #endregion
 
                     #region Function
 
@@ -94,7 +78,7 @@ namespace JScript.Parsers
 
                     #region While
                     case TokenType.While:
-                        var  whileNode = this.StepWhile();
+                        var whileNode = this.StepWhile();
                         tree.Children.Add(whileNode);
                         break;
                     #endregion
@@ -123,9 +107,15 @@ namespace JScript.Parsers
             }
             return tree;
         }
+
+        private ISyntaxNode[] StepParameter()
+        {
+            throw new NotImplementedException();
+        }
+
         private ISyntaxNode StepAssgin()
         {
-            var left = this.lexer.Current[0].Fragment.Text;
+            var left = this.lexer.Current.Fragment.Text;
             OperateType opt = this.StepOperate();
             ISyntaxNode right = this.StepExpression();
             return new AssignNode(left, opt, right);
