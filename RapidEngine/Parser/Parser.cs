@@ -8,77 +8,29 @@ namespace JScript.Parsers
 {
     public class Parser
     {
-        private static Regex regexIdentifier = new Regex("^[_a-zA-Z][_a-zA-Z0-9]*");
+        private Dictionary<string, List<TokenDefinition>> tokenDefinitions = new Dictionary<string, List<TokenDefinition>>();
 
         private readonly Lexer lexer;
         public Parser(string code)
         {
+            tokenDefinitions.Add("program",
+                new List<TokenDefinition>()
+                {
+                    TokenDefinition.Assgin,
+                    TokenDefinition.Function,
+                    TokenDefinition.If,
+                    TokenDefinition.For,
+                });
             this.lexer = new Lexer(code);
         }
         public SyntaxTree Parse()
         {
             SyntaxTree tree = new SyntaxTree();
-            while (this.lexer.NextToken())
+            foreach (var item in tokenDefinitions["program"])
             {
-                var token = this.lexer.Current;
-                switch (token.Type)
+                if ()
                 {
 
-                    #region Assign
-                    case TokenType.Word:
-                        if (!regexIdentifier.IsMatch(token.Fragment.Text))
-                        {
-                            throw new ScriptException("", token);
-                        }
-                        var operate = this.StepOperate();
-                        var exprssion = this.StepExpression();
-                        tree.Children.Add(new AssignNode(token.Fragment.Text, OperateType.Add, exprssion));
-                        break;
-                    #endregion
-
-                    #region Return
-                    case TokenType.Return:
-                        var returnNode = this.StepReturn();
-
-                        tree.Children.Add(returnNode);
-                        break;
-                    #endregion
-
-                    #region Function
-
-                    case TokenType.Function:
-                        tree.Children.Add(this.Function(ScriptTypes.Null));
-                        break;
-
-                    #endregion
-
-                    #region While
-                    case TokenType.While:
-                        var whileNode = this.StepWhile();
-                        tree.Children.Add(whileNode);
-                        break;
-                    #endregion
-
-                    #region For
-                    case TokenType.For:
-                        var forNode = this.StepFor();
-                        tree.Children.Add(forNode);
-                        break;
-                    #endregion
-
-                    #region Foreach
-                    case TokenType.Foreach:
-                        break;
-                    #endregion
-
-                    #region If
-                    case TokenType.If:
-                        var ifNode = this.StepIf();
-                        tree.Children.Add(ifNode);
-                        break;
-                    #endregion
-                    default:
-                        break;
                 }
             }
             return tree;
@@ -124,7 +76,7 @@ namespace JScript.Parsers
                             default:
                                 break;
                         }
-                        
+
                         break;
                     case TokenType.OpreationSub:
                         break;

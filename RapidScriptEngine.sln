@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidScriptEngine", "JScrip
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RapidScriptEngineUnitTest", "UnitTest\RapidScriptEngineUnitTest.csproj", "{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RapidEngine", "RapidEngine\RapidEngine.csproj", "{82AF46CF-6DCB-4845-A8AB-6687CEB86F90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89F7B759-0B85-4E46-8AD6-AF22B1BACE51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82AF46CF-6DCB-4845-A8AB-6687CEB86F90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82AF46CF-6DCB-4845-A8AB-6687CEB86F90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82AF46CF-6DCB-4845-A8AB-6687CEB86F90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82AF46CF-6DCB-4845-A8AB-6687CEB86F90}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

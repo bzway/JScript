@@ -159,7 +159,6 @@ namespace JScript.Lexers
 
     public enum TokenType
     {
-        CloseCurly,
         Comment,
         Integer,
         String,
@@ -194,15 +193,10 @@ namespace JScript.Lexers
         /// {
         /// </summary>
         OpenCurly,
-        End,
-        Not,
-        And,
-        Or,
-        Xor,
-        Word,
-        Equal,
-        Return,
-        Assign,
+        /// <summary>
+        /// }
+        /// </summary>
+        CloseCurly,
         /// <summary>
         /// [
         /// </summary>
@@ -211,7 +205,22 @@ namespace JScript.Lexers
         /// ]
         /// </summary>
         CloseSquare,
+        End,
+        Not,
+        And,
+        Or,
+        Xor,
+        Word,
+        Equal,
+        Return,
+        Assign,   
+        /// <summary>
+        /// .
+        /// </summary>
         Dot,
+        /// <summary>
+        /// ,
+        /// </summary>
         Comma,
     }
 }
